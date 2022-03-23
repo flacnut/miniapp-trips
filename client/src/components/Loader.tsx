@@ -11,6 +11,13 @@
    ApolloProvider,
  } from "@apollo/client";
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
 
 export default function Loader() {
     const client = new ApolloClient({
@@ -20,7 +27,9 @@ export default function Loader() {
 
     return (
         <ApolloProvider client={client}>
-            <App />
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
         </ApolloProvider>
     );
 }
